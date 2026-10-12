@@ -1,0 +1,10 @@
+{
+  "id": "8422035",
+  "company": "MED LIFE SA",
+  "brand": "Medlife",
+  "status": "activ",
+  "location": ["Bucuresti"],
+  "website": ["https://www.medlife.ro"],
+  "career": ["https://www.medlife.ro/cariere/lista-joburi"],
+  "scraperFile": "https://github.com/peviitor-scrapers/med-life-nodejs-scraper/actions/workflows/scrape.yml"
+}
