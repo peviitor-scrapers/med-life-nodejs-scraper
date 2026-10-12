@@ -266,6 +266,65 @@ function locationFromTitle(title) {
   return hit ? [hit] : scraperConfig.defaultLocation;
 }
 
+// ---------------------------------------------------------------------------
+// Medlife: paginated card list (/lista-joburi/s/page/N), one card per job,
+// permalink = onclick target (/cariere/job-apply/<id>), validity "dd.mm - dd.mm.yyyy".
+// ---------------------------------------------------------------------------
+const MEDLIFE_CITIES = [
+  "Bucuresti", "Cluj-Napoca", "Cluj", "Iasi", "Timisoara", "Brasov", "Constanta", "Craiova", "Sibiu",
+  "Oradea", "Ploiesti", "Pitesti", "Galati", "Bacau", "Arad", "Targu Mures", "Baia Mare", "Suceava",
+  "Satu Mare", "Botosani", "Buzau", "Focsani", "Ramnicu Valcea", "Alba Iulia", "Deva", "Hunedoara",
+  "Slatina", "Tulcea", "Targoviste", "Piatra Neamt", "Bistrita", "Zalau", "Resita", "Giurgiu",
+  "Braila", "Drobeta-Turnu Severin", "Targu Jiu", "Sfantu Gheorghe", "Miercurea Ciuc", "Vaslui", "Alexandria", "Calarasi", "Slobozia"
+];
+const stripDia = (t) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+function medlifeCity(text) {
+  const hay = stripDia(text);
+  const hit = MEDLIFE_CITIES.find((c) => new RegExp(`\\b${stripDia(c)}\\b`).test(hay));
+  return hit ? [hit === "Cluj" ? "Cluj-Napoca" : hit] : null;
+}
+
+function parseMedlifeCards(html) {
+  const items = [];
+  const re = /window\.location\.href='([^']*job-apply\/\d+)'([\s\S]*?)(?=window\.location\.href='|$)/g;
+  for (const m of html.matchAll(re)) {
+    const body = m[2];
+    const title = cleanTitle((body.match(/card-title-joburi-detalii[^>]*>\s*<div>([\s\S]*?)<\/div>/) || [])[1]);
+    if (!title) continue;
+    const place = cleanTitle((body.match(/<span>([\s\S]*?)<\/span>/) || [])[1]) || "";
+    const dates = [...body.matchAll(/\d{2}\.\d{2}\.\d{4}/g)].map((d) => d[0]);
+    items.push({
+      title,
+      url: m[1],
+      expirationdate: dates.length ? parseDeadline(dates[dates.length - 1]) : undefined,
+      location: medlifeCity(`${title} ${place}`) || undefined
+    });
+  }
+  return items;
+}
+
+async function fetchMedlifeListing() {
+  const base = scraperConfig.sources.listing.replace(/\/$/, "");
+  const all = [];
+  const seen = new Set();
+  let maxPage = 1;
+  for (let p = 1; p <= Math.min(maxPage, 20); p++) {
+    const res = await fetch(`${base}/s/page/${p}`, { timeout: TIMEOUT, headers: { "User-Agent": userAgent } });
+    if (!res.ok) throw new Error(`listing page ${p} returned ${res.status}`);
+    const html = await res.text();
+    for (const m of html.matchAll(/lista-joburi\/s\/page\/(\d+)/g)) maxPage = Math.max(maxPage, Number(m[1]));
+    for (const it of parseMedlifeCards(html)) {
+      if (seen.has(it.url)) continue;
+      seen.add(it.url);
+      all.push(it);
+    }
+    if (p < maxPage) await sleep(PAGE_DELAY);
+  }
+  console.log(`  Medlife listing: ${all.length} cards over ${maxPage} page(s)`);
+  return all;
+}
+
 async function scrapeCareers() {
   console.log(`Scraping ${scraperConfig.sources.listing} ...`);
   const jobs = [];
@@ -275,7 +334,7 @@ async function scrapeCareers() {
 
   let listingItems = [];
   try {
-    listingItems = parseListing(await fetchListing());
+    listingItems = await fetchMedlifeListing();
     console.log(`  Listing: ${listingItems.length} open positions`);
   } catch (err) {
     console.log(`  Listing error: ${err.message}`);
@@ -337,7 +396,7 @@ async function scrapeCareers() {
       jobs.push({
         url,
         title: item.title,
-        location: locationFromTitle(item.title),
+        location: item.location || locationFromTitle(item.title),
         workmode: scraperConfig.defaultWorkmode,
         expirationdate: item.expirationdate,
         source: CAREERS_SOURCE
@@ -727,7 +786,7 @@ async function main(dryRun = process.argv.includes("--dry-run")) {
   }
 }
 
-export { mapToJobModel, transformJobsForSOLR, scrapeCareers, fetchSitemapJobUrls, parseListing, slugify, matchSitemapUrl, matchSitemapUrlExact, parseDeadline, dropDeadUrls };
+export { parseMedlifeCards, medlifeCity, mapToJobModel, transformJobsForSOLR, scrapeCareers, fetchSitemapJobUrls, parseListing, slugify, matchSitemapUrl, matchSitemapUrlExact, parseDeadline, dropDeadUrls };
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   main();
