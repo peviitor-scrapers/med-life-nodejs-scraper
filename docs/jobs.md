@@ -10,11 +10,11 @@
 | Location | MUNICIPIUL BUCUREŞTI, SECTOR 1, CALEA GRIVITEI, NR.365 |
 | Website | [https://www.medlife.ro](https://www.medlife.ro) |
 | Careers | [https://www.medlife.ro/cariere/lista-joburi](https://www.medlife.ro/cariere/lista-joburi) |
-| Last Scraped | 2026-10-12 |
+| Last Scraped | 2026-10-13 |
 
 ## Current Job Listings (44)
 
-_Generated: 2026-10-12T18:25:29.837Z_
+_Generated: 2026-10-13T13:40:39.210Z_
 
 ### Medic Reumatolog - MedLife Floreasca
 
@@ -174,7 +174,7 @@ _Generated: 2026-10-12T18:25:29.837Z_
 
 - **URL:** [https://www.medlife.ro/cariere/job-apply/15674](https://www.medlife.ro/cariere/job-apply/15674)
 - **Work Mode:** on-site
-- **Location:** Bucuresti
+- **Location:** Targu Mures
 - **Status:** scraped
 
 ### Medic Internist - Clinica Sfanta Maria Plaza
