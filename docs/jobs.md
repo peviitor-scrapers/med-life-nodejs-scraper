@@ -10,11 +10,11 @@
 | Location | MUNICIPIUL BUCUREŞTI, SECTOR 1, CALEA GRIVITEI, NR.365 |
 | Website | [https://www.medlife.ro](https://www.medlife.ro) |
 | Careers | [https://www.medlife.ro/cariere/lista-joburi](https://www.medlife.ro/cariere/lista-joburi) |
-| Last Scraped | 2026-10-23 |
+| Last Scraped | 2026-10-24 |
 
 ## Current Job Listings (44)
 
-_Generated: 2026-10-23T11:07:10.890Z_
+_Generated: 2026-10-24T10:23:28.737Z_
 
 ### Medic Reumatolog - MedLife Floreasca
 
