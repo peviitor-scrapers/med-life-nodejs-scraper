@@ -10,11 +10,18 @@
 | Location | MUNICIPIUL BUCUREŞTI, SECTOR 1, CALEA GRIVITEI, NR.365 |
 | Website | [https://www.medlife.ro](https://www.medlife.ro) |
 | Careers | [https://www.medlife.ro/cariere/lista-joburi](https://www.medlife.ro/cariere/lista-joburi) |
-| Last Scraped | 2026-11-01 |
+| Last Scraped | 2026-11-02 |
 
-## Current Job Listings (44)
+## Current Job Listings (45)
 
-_Generated: 2026-11-01T12:45:35.361Z_
+_Generated: 2026-11-02T14:56:09.188Z_
+
+### Medic Cardiolog - Ghencea Medical Center
+
+- **URL:** [https://www.medlife.ro/cariere/job-apply/9222](https://www.medlife.ro/cariere/job-apply/9222)
+- **Work Mode:** on-site
+- **Location:** Bucuresti
+- **Status:** scraped
 
 ### Medic Reumatolog - MedLife Floreasca
 
@@ -37,16 +44,9 @@ _Generated: 2026-11-01T12:45:35.361Z_
 - **Location:** Bucuresti
 - **Status:** scraped
 
-### Receptionist - MedLife - Iasi
+### Medic Cardiolog - Spitalul de Ortopedie MedLife
 
-- **URL:** [https://www.medlife.ro/cariere/job-apply/25114](https://www.medlife.ro/cariere/job-apply/25114)
-- **Work Mode:** on-site
-- **Location:** Iasi
-- **Status:** scraped
-
-### Medic Radiolog Imagistica CT - MedLife Favorit
-
-- **URL:** [https://www.medlife.ro/cariere/job-apply/9166](https://www.medlife.ro/cariere/job-apply/9166)
+- **URL:** [https://www.medlife.ro/cariere/job-apply/12313](https://www.medlife.ro/cariere/job-apply/12313)
 - **Work Mode:** on-site
 - **Location:** Bucuresti
 - **Status:** scraped
@@ -58,9 +58,16 @@ _Generated: 2026-11-01T12:45:35.361Z_
 - **Location:** Bucuresti
 - **Status:** scraped
 
-### Medic Cardiolog - Spitalul de Ortopedie MedLife
+### Receptionist - MedLife - Iasi
 
-- **URL:** [https://www.medlife.ro/cariere/job-apply/12313](https://www.medlife.ro/cariere/job-apply/12313)
+- **URL:** [https://www.medlife.ro/cariere/job-apply/25114](https://www.medlife.ro/cariere/job-apply/25114)
+- **Work Mode:** on-site
+- **Location:** Iasi
+- **Status:** scraped
+
+### Medic Radiolog Imagistica CT - MedLife Favorit
+
+- **URL:** [https://www.medlife.ro/cariere/job-apply/9166](https://www.medlife.ro/cariere/job-apply/9166)
 - **Work Mode:** on-site
 - **Location:** Bucuresti
 - **Status:** scraped
@@ -79,16 +86,16 @@ _Generated: 2026-11-01T12:45:35.361Z_
 - **Location:** Bucuresti
 - **Status:** scraped
 
-### Asistent medical generalist - Clinica MedLife Baneasa
+### Asistenti Generalisti - ATI - Spitalul de Ortopedie
 
-- **URL:** [https://www.medlife.ro/cariere/job-apply/4396](https://www.medlife.ro/cariere/job-apply/4396)
+- **URL:** [https://www.medlife.ro/cariere/job-apply/5395](https://www.medlife.ro/cariere/job-apply/5395)
 - **Work Mode:** on-site
 - **Location:** Bucuresti
 - **Status:** scraped
 
-### Asistenti Generalisti - ATI - Spitalul de Ortopedie
+### Asistent medical generalist - Clinica MedLife Baneasa
 
-- **URL:** [https://www.medlife.ro/cariere/job-apply/5395](https://www.medlife.ro/cariere/job-apply/5395)
+- **URL:** [https://www.medlife.ro/cariere/job-apply/4396](https://www.medlife.ro/cariere/job-apply/4396)
 - **Work Mode:** on-site
 - **Location:** Bucuresti
 - **Status:** scraped
