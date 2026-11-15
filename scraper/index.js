@@ -133,7 +133,7 @@ async function fetchSitemapJobUrls() {
   if (!sitemapUrl || sitemapUrl.startsWith("{{")) return []; // not configured
   try {
     const res = await fetch(sitemapUrl, {
-      timeout: TIMEOUT,
+      signal: AbortSignal.timeout(TIMEOUT),
       headers: { "User-Agent": userAgent }
     });
     if (!res.ok) {
@@ -160,7 +160,7 @@ async function fetchSitemapJobUrls() {
 
 async function fetchListing() {
   const res = await fetch(scraperConfig.sources.listing, {
-    timeout: TIMEOUT,
+    signal: AbortSignal.timeout(TIMEOUT),
     headers: { "User-Agent": userAgent }
   });
   if (!res.ok) throw new Error(`listing returned ${res.status}`);
@@ -310,7 +310,7 @@ async function fetchMedlifeListing() {
   const seen = new Set();
   let maxPage = 1;
   for (let p = 1; p <= Math.min(maxPage, 20); p++) {
-    const res = await fetch(`${base}/s/page/${p}`, { timeout: TIMEOUT, headers: { "User-Agent": userAgent } });
+    const res = await fetch(`${base}/s/page/${p}`, { signal: AbortSignal.timeout(TIMEOUT), headers: { "User-Agent": userAgent } });
     if (!res.ok) throw new Error(`listing page ${p} returned ${res.status}`);
     const html = await res.text();
     for (const m of html.matchAll(/lista-joburi\/s\/page\/(\d+)/g)) maxPage = Math.max(maxPage, Number(m[1]));
@@ -440,7 +440,7 @@ async function searchANOFM(cif) {
     };
     const res = await fetch("https://mediere.anofm.ro/api/entity/vw_public_job_posting", {
       method: "POST",
-      timeout: TIMEOUT,
+      signal: AbortSignal.timeout(TIMEOUT),
       headers: {
         "Content-Type": "application/json",
         "User-Agent": userAgent
